@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 DJANGO_APPS = (
-	# Aca irian esas que estan desde el inicio del proyecto y vienen por defecto
+	# Apps Default - Djnago
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,12 +39,12 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-	# Aca irian apps externas como Django Rest Framework, Celery, django debug toolbar, etc
+	# Apps Externas
 )
 
 LOCAL_APPS = (
-	# Aca irian las apps de nuestros proyectos que vamoss a instalar,
-    'platzigram',
+	# Apps Propias
+    'posts',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
