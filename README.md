@@ -1,0 +1,1 @@
+#Proyecto PlatziGram, realziado con Django 2.1
