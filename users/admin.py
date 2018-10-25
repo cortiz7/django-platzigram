@@ -30,7 +30,7 @@ class ProfileAdmin(admin.ModelAdmin):
             'fields': ('created', 'updated')
         })
     )
-    readonly_fields = ('created', 'updated', 'user')
+    readonly_fields = ('created', 'updated')
 
 class ProfileInline(admin.StackedInline):
     model = Profile
