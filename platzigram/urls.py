@@ -27,7 +27,9 @@ urlpatterns = [
     path('sorted',local_views.sort_integers, name='sort'),
     path('hi/<str:name>/<int:age>', local_views.say_hi, name='hi'),
 
-    path('posts', posts_views.list_posts, name='posts'),
+    path('', posts_views.list_posts, name='posts'),
+    path('posts/new/', posts_views.create_post, name='create_post'),
+
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup_view, name='signup'),

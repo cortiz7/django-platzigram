@@ -15,6 +15,7 @@ from users.forms import ProfileForm
 
 
 # Create your views
+
 def login_view(request):
     #import pdb; pdb.set_trace()
     if request.method == 'POST':
@@ -56,6 +57,7 @@ def signup_view(request):
 
     return render(request, 'users/signup.html')
 
+@login_required
 def update_profile(request):
     """Update Profile """
     profile = request.user.profile

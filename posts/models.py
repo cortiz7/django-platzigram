@@ -10,4 +10,4 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return '{} by @ {}'.format(self.title, self.user.username)
+        return '{}'.format(self.title)
