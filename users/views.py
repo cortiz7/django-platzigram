@@ -11,7 +11,7 @@ from users.models import Profile
 from django.db.utils import IntegrityError
 
 # Forms
-from users.forms import ProfileForm
+from users.forms import ProfileForm, SignupForm
 
 
 # Create your views
@@ -35,27 +35,22 @@ def logout_view(request):
     return redirect('login')
 
 def signup_view(request):
+    """Sign up  view."""
+
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        password_confirm = request.POST['password_confirm']
-        if password != password_confirm:
-            return render(request, 'users/signup.html', {'error' : 'Password confirmation does not match'})
-        
-        try:
-            user = User.objects.create_user(username=username, password=password)
-        except IntegrityError:
-            return render(request, 'users/signup.html', {'error' : 'Username is already in user'})
-        user.first_name = request.POST['first_name']
-        user.last_name = request.POST['last_name']
-        user.email = request.POST['email']
-        user.save()
-
-        profile = Profile(user=user)
-        profile.save()
-        return redirect('login')
-
-    return render(request, 'users/signup.html')
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignupForm()
+    return render(
+        request = request,
+        template_name = 'users/signup.html',
+        context={
+            'form': form,
+        }
+    )
 
 @login_required
 def update_profile(request):
